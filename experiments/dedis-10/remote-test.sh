@@ -45,11 +45,11 @@ nohup ssh "${replica5}"    -i ${cert}   ".${remote_replica_path}  run --keys ${r
 
 sleep 10
 
-nohup ssh "${replica6}"      -i ${cert}   ".${remote_client_path} ${replica1_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 ${nodes}" >${local_output_path}5.log &
-nohup ssh "${replica7}"      -i ${cert}   ".${remote_client_path} ${replica2_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 ${nodes}" >${local_output_path}6.log &
-nohup ssh "${replica8}"      -i ${cert}   ".${remote_client_path} ${replica3_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 ${nodes}" >${local_output_path}7.log &
-nohup ssh "${replica9}"      -i ${cert}   ".${remote_client_path} ${replica4_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 ${nodes}" >${local_output_path}8.log &
-nohup ssh "${replica110}"    -i ${cert}   ".${remote_client_path} ${replica5_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 ${nodes}" >${local_output_path}9.log &
+nohup ssh "${replica6}"      -i ${cert}   ".${remote_client_path} ${replica1_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}" >${local_output_path}5.log &
+nohup ssh "${replica7}"      -i ${cert}   ".${remote_client_path} ${replica2_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}" >${local_output_path}6.log &
+nohup ssh "${replica8}"      -i ${cert}   ".${remote_client_path} ${replica3_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}" >${local_output_path}7.log &
+nohup ssh "${replica9}"      -i ${cert}   ".${remote_client_path} ${replica4_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}" >${local_output_path}8.log &
+nohup ssh "${replica10}"     -i ${cert}   ".${remote_client_path} ${replica5_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}" >${local_output_path}9.log &
 
 
 sleep 120
