@@ -22,7 +22,7 @@ do
     echo "copying configs to replica ${index}"
     scp -i ${cert} logs/dedis-10/.committee.json   "${replicas[${index}]}":"${remote_home_path}"
     scp -i ${cert} logs/dedis-10/.parameters.json   "${replicas[${index}]}":"${remote_home_path}"
-    scp -i ${cert} logs/dedis-10/.node-{index}.json   "${replicas[${index}]}":"${remote_home_path}"
+    scp -i ${cert} logs/dedis-10/.node-${index}.json   "${replicas[${index}]}":"${remote_home_path}"
 
     sshpass ssh "${replicas[${index}]}" -i ${cert} "${kill_instances}; rm -r ${remote_home_path}/logs; mkdir -p ${remote_home_path}/logs"
     sshpass ssh "${replicas[${index}]}" -i ${cert} "${kill_instances}; rm ${remote_home_path}/.db-${index}"
