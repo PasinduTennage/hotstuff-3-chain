@@ -37,11 +37,11 @@ rm -r "${local_output_path}"; mkdir -p "${local_output_path}"
 
 echo "starting replicas"
 
-nohup ssh "${replica1}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_replica_path}.node-0.json --committee ${remote_replica_path}.committee.json --store ${remote_replica_path}.db-0  --parameters ${remote_replica_path}.parameters.json" >${local_output_path}0.log &
-nohup ssh "${replica2}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_replica_path}.node-1.json --committee ${remote_replica_path}.committee.json --store ${remote_replica_path}.db-1  --parameters ${remote_replica_path}.parameters.json" >${local_output_path}1.log &
-nohup ssh "${replica3}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_replica_path}.node-2.json --committee ${remote_replica_path}.committee.json --store ${remote_replica_path}.db-2  --parameters ${remote_replica_path}.parameters.json" >${local_output_path}2.log &
-nohup ssh "${replica4}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_replica_path}.node-3.json --committee ${remote_replica_path}.committee.json --store ${remote_replica_path}.db-3  --parameters ${remote_replica_path}.parameters.json" >${local_output_path}3.log &
-nohup ssh "${replica5}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_replica_path}.node-4.json --committee ${remote_replica_path}.committee.json --store ${remote_replica_path}.db-4  --parameters ${remote_replica_path}.parameters.json" >${local_output_path}4.log &
+nohup ssh "${replica1}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_home_path}.node-0.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-0  --parameters ${remote_home_path}.parameters.json" >${local_output_path}0.log &
+nohup ssh "${replica2}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_home_path}.node-1.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-1  --parameters ${remote_home_path}.parameters.json" >${local_output_path}1.log &
+nohup ssh "${replica3}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_home_path}.node-2.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-2  --parameters ${remote_home_path}.parameters.json" >${local_output_path}2.log &
+nohup ssh "${replica4}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_home_path}.node-3.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-3  --parameters ${remote_home_path}.parameters.json" >${local_output_path}3.log &
+nohup ssh "${replica5}"    -i ${cert}   ".${remote_replica_path}  run --keys ${remote_home_path}.node-4.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-4  --parameters ${remote_home_path}.parameters.json" >${local_output_path}4.log &
 
 sleep 10
 
