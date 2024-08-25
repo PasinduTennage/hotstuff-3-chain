@@ -15,7 +15,7 @@ parser.add_argument('--output_path', type=str, default="logs/dedis-10/", nargs='
 args = parser.parse_args()
 
 # File 1: .parameters.yml
-node_parameters = {
+node_parameters_dict = {
     "consensus": {
         "max_payload_size": 500,
         "min_block_delay": args.min_block_delay,
@@ -30,11 +30,14 @@ node_parameters = {
     }
 }
 
+############
+# params
+
 with open(args.output_path + '.parameters.json', 'w') as json_file:
-    json.dump(node_parameters, json_file, indent=4)
+    json.dump(node_parameters_dict, json_file, indent=4)
 
 ############
-# Private configs
+# key files
 for i in range(len(args.replicas)):
     os.system(f".{args.output_path}node keys --filename {args.output_path}.node-{i}.json")
 
