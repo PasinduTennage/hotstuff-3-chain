@@ -9,8 +9,7 @@ kill_instances="pkill -f node ; pkill -f client"
 install_dependencies="sudo apt-get update"
 
 # build the binary in a remote replica, uncomment when needed
-sshpass ssh "${replicas[0]}" -i ${cert} "rm -r ${remote_home_path}; git clone https://github.com/PasinduTennage/hotstuff-3-chain; cd hotstuff-3-chain; git checkout 3-chain; sudo apt-get install libfontconfig1-dev; source $HOME/.cargo/env; cargo build --release;"
-#sshpass ssh "${replicas[0]}" -i ${cert} "cd hotstuff-3-chain; git checkout 3-chain; git pull origin 3-chain; sudo apt-get install libfontconfig1-dev; source $HOME/.cargo/env; cargo build --release;"
+sshpass ssh "${replicas[0]}" -i ${cert} "rm -r ${remote_home_path}; git clone https://github.com/PasinduTennage/hotstuff-3-chain; cd hotstuff-3-chain; git checkout 3-chain; sudo apt-get install libfontconfig1-dev; source /home/${username}/.cargo/env; cargo build --quiet --release --features benchmark"
 scp -i ${cert} "${replicas[0]}":${remote_home_path}target/release/node logs/dedis-10/node
 scp -i ${cert} "${replicas[0]}":${remote_home_path}target/release/client logs/dedis-10/client
 
