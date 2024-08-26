@@ -37,25 +37,27 @@ rm -r "${local_output_path}"; mkdir -p "${local_output_path}"
 
 echo "starting replicas"
 
-nohup ssh "${replica1}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-0.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-0  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}0.log 2>&1  &
-nohup ssh "${replica2}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-1.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-1  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}1.log 2>&1  &
-nohup ssh "${replica3}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-2.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-2  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}2.log 2>&1  &
-nohup ssh "${replica4}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-3.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-3  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}3.log 2>&1  &
-nohup ssh "${replica5}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-4.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-4  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}4.log 2>&1  &
+nohup ssh "${replica1}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-0.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-0  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}node-0.log 2>&1  &
+nohup ssh "${replica2}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-1.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-1  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}node-1.log 2>&1  &
+nohup ssh "${replica3}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-2.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-2  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}node-2.log 2>&1  &
+nohup ssh "${replica4}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-3.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-3  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}node-3.log 2>&1  &
+nohup ssh "${replica5}"    -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_replica_path}  run --keys ${remote_home_path}.node-4.json --committee ${remote_home_path}.committee.json --store ${remote_home_path}.db-4  --parameters ${remote_home_path}.parameters.json'" >${local_output_path}node-4.log 2>&1  &
 
 sleep 10
 
-nohup ssh "${replica6}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica1_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}5.log  2>&1 &
-nohup ssh "${replica7}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica2_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}6.log  2>&1 &
-nohup ssh "${replica8}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica3_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}7.log  2>&1 &
-nohup ssh "${replica9}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica4_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}8.log  2>&1 &
-nohup ssh "${replica10}"     -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica5_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}9.log  2>&1 &
+nohup ssh "${replica6}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica1_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}client-0.log  2>&1 &
+nohup ssh "${replica7}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica2_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}client-1.log  2>&1 &
+nohup ssh "${replica8}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica3_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}client-2.log  2>&1 &
+nohup ssh "${replica9}"      -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica4_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}client-3.log  2>&1 &
+nohup ssh "${replica10}"     -i ${cert}   "bash -c 'export RUST_LOG=info; .${remote_client_path} ${replica5_name}:10000 --size ${transaction_size} --rate ${load} --timeout 3000 --nodes ${nodes}'" >${local_output_path}client-4.log  2>&1 &
 
 
-sleep 120
+sleep 200
 
 for index in "${!replicas[@]}";
 do
     echo "killing instance"
     sshpass ssh "${replicas[${index}]}" -i ${cert} "${kill_instances}"
 done
+
+python3 experiments/python/stats.py  --output_path ${local_output_path}

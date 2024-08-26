@@ -275,4 +275,4 @@ class LogParser:
         return cls(clients, nodes, faults=faults)
 
 
-LogParser.process(args.output_path, faults=False).print(args.output_path + 'results.log')
+LogParser.process(args.output_path, faults=0).print(args.output_path + 'results.log')
